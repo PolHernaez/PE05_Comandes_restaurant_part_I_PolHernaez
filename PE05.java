@@ -2,6 +2,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 public class PE05 {
     Scanner entrada = new Scanner(System.in);
+    boolean menuA = true;
+    String linea = "";
+     String nomProducte = "";
+     String nomClient = "";
+     int numeroTicket = 1;
+double preuUnitari = 0;
+int quantitat = 0;
+String resposta = "";
     public static void main(String[] args) {
         PE05 p = new PE05();
         p.principal();
@@ -9,7 +17,7 @@ public class PE05 {
     }  
     public void principal() {
     
-        System.out.println("BENBINGUT");
+        System.out.println("BENVINGUT");
         boolean mainMenu = true;
         do {
             System.out.println("A) Crear nova comanda");
@@ -28,10 +36,10 @@ public class PE05 {
             }
             switch (opcio) {
                 case "a":
-                    boolean menuA = true;
+                    
                     System.out.print("Introdueix el nom del client: ");
                     try {
-                    String nomClient = entrada.nextLine();
+                    nomClient = entrada.nextLine();
                     }
                     catch (InputMismatchException e) {
                         System.out.println("Error: Si us plau, introdueix un nom vàlid.");}
@@ -40,20 +48,24 @@ public class PE05 {
                     }
                     do {
                     novaComanda();
+                    guardarComanda();
                     } while (menuA);
                     break;
                     
-            
+                case "c":
+                Ticketinfo();
+                System.out.println(linea);
+                    break;
+                case "b":
+                
+                break;
                 
             }
         } while (mainMenu);
 
     }
     public void novaComanda() {
- String nomProducte = "";
-double preuUnitari = 0;
-int quantitat = 0;
-String resposta = "";
+
 
 System.out.print("Introdueix el producte: ");   
 try {
@@ -103,14 +115,41 @@ catch (Exception e) {
     tryCorrecte = true;
 }   
 } while (tryCorrecte);
-
-
-System.out.print("Vols afegir un altre producte? (sí/no): ");
+boolean siNoCorrecte = false;
+entrada.nextLine();
+do {
+    
+System.out.print("Vols afegir un altre producte? (si/no): ");
 try {
     resposta = entrada.nextLine();
 } 
 catch (Exception e) {
     System.out.println("Error inesperat");
 }
+
+
+if (resposta.equalsIgnoreCase("no")) {
+    menuA = false;
+    siNoCorrecte = true;
+} else if (resposta.equalsIgnoreCase("si")) {
+    menuA = true;
+    siNoCorrecte = true;
 }
+else {
+    System.out.println("Resposta no vàlida. ");
+    }   
+} while (!siNoCorrecte);
+
 }
+public void guardarComanda() {
+    
+    linea =linea + "\n" +numeroTicket+ "\t"+nomClient+ "\t"+ nomProducte + "\t" + preuUnitari + "€ \t" + quantitat + "\n";
+    numeroTicket++;
+
+   }
+public void Ticketinfo() {
+    System.out.println("TICKET");
+    System.out.println("------------------------------------------------------");
+    System.out.println("NUM\tCLIENT\tPRODUCTE\tPREU UNITARI\tQUANTITAT");
+
+}}
