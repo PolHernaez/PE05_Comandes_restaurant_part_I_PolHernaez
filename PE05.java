@@ -36,9 +36,14 @@ static String comandaGuardada = "";
             catch (Exception e) {
                 System.out.println("Error inesperat");
             }
+            boolean A = false;
+            if ((opcio.equalsIgnoreCase("b") || opcio.equalsIgnoreCase("c")) && !A){
+                System.out.println("No hi ha cap comanda anterior per actualitzar.");
+                continue;
+            }
             switch (opcio) {
                 case "a":
-                    
+                    A = true;
                      total = 0;
                     comandaGuardada = "";
                      linea = "";
@@ -70,11 +75,14 @@ static String comandaGuardada = "";
                     novaComanda();
                     guardarComanda();
                     } while (menuA);
-                    comandaGuardadaM(nomClient, linea, total);                break;
+                    comandaGuardadaM(nomClient, linea, total);                
+                    break;
+                case "d":
+                    mainMenu = false;
                 
             }
         } while (mainMenu);
-
+        System.out.println("Fins aviat!");
     }
     public void novaComanda() {
 
