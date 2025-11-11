@@ -10,11 +10,13 @@ public class PE05 {
 double preuUnitari = 0;
 int quantitat = 0;
 String resposta = "";
+double total = 0;
+static String comandaGuardada = "";
     public static void main(String[] args) {
         PE05 p = new PE05();
         p.principal();
-        
     }  
+    
     public void principal() {
     
         System.out.println("BENVINGUT");
@@ -22,7 +24,7 @@ String resposta = "";
         do {
             System.out.println("A) Crear nova comanda");
             System.out.println("B) Actualitzar comanda anterior");
-            System.out.println("C) Visualitzar últim tiquet");
+            System.out.println("C) Visualitzar últim tiquets");
             System.out.println("D) Sortir");
             System.out.println("(a/b/c/d)");
             String opcio = "";
@@ -37,6 +39,10 @@ String resposta = "";
             switch (opcio) {
                 case "a":
                     
+                     total = 0;
+                    comandaGuardada = "";
+                     linea = "";
+                     numeroTicket = 1;
                     System.out.print("Introdueix el nom del client: ");
                     try {
                     nomClient = entrada.nextLine();
@@ -49,16 +55,22 @@ String resposta = "";
                     do {
                     novaComanda();
                     guardarComanda();
+                    
                     } while (menuA);
+                    comandaGuardadaM(nomClient, linea, total);
                     break;
                     
                 case "c":
-                Ticketinfo();
-                System.out.println(linea);
+                    
+                    System.out.println(comandaGuardada);
+                    
                     break;
                 case "b":
-                
-                break;
+                do {
+                    novaComanda();
+                    guardarComanda();
+                    } while (menuA);
+                    comandaGuardadaM(nomClient, linea, total);                break;
                 
             }
         } while (mainMenu);
@@ -137,19 +149,20 @@ if (resposta.equalsIgnoreCase("no")) {
 }
 else {
     System.out.println("Resposta no vàlida. ");
-    }   
+    }
+    System.out.println("");   
 } while (!siNoCorrecte);
 
 }
 public void guardarComanda() {
-    
-    linea =linea + "\n" +numeroTicket+ "\t"+nomClient+ "\t"+ nomProducte + "\t" + preuUnitari + "€ \t" + quantitat + "\n";
+        
+        double subtotal = (preuUnitari * quantitat);
+        total = total + subtotal;
+        
+    linea =linea + "\n" +numeroTicket+ "\t"+ "\t"+ nomProducte + "\t" + preuUnitari + "€ \t" + quantitat +"\t"+ subtotal + "€"+"\n" ;
     numeroTicket++;
-
+   }public void comandaGuardadaM(String nomClient, String linea, double total) {
+                        comandaGuardada =comandaGuardada+ "\n" + "TICKET" + "\n" + "Client: "+ nomClient + "\n" + "=================================================================" + "\n" + "NUM\tPRODUCTE\tPREU UNITARI\tQUANTITAT\tSUBTOTAL" + "\n" +  linea + "================================================================="+ "\n" + "TOTAL SENSE IVA: " + total + "€" +"\n" + "IVA (10%):\t"+(total*0.1)+"€"+"\n"+"TOTAL:\t"+ (total+(total*0.1))+"€"+"\n"+"================================================================";
+    
    }
-public void Ticketinfo() {
-    System.out.println("TICKET");
-    System.out.println("------------------------------------------------------");
-    System.out.println("NUM\tCLIENT\tPRODUCTE\tPREU UNITARI\tQUANTITAT");
-
-}}
+}
