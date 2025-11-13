@@ -143,7 +143,7 @@ public class PE05 {
             System.out.println("");   
         } while (!siNoCorrecte);
     }
-    public void guardarComanda() {
+    public void guardarComanda() { // Guardar línia de comanda
         double subtotal = (preuUnitari * quantitat);
         total = total + subtotal;
         linea = linea + "\n" + numeroTicket + "\t" + nomProducte + igualarTicket(nomProducte, 20) + preuUnitari + "€" + igualarTicket(preuUnitari + "€",  20) + quantitat + igualarTicket(quantitat + "€",  20) + subtotal + "€" + "\n";
