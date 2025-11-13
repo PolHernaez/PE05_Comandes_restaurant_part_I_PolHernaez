@@ -157,7 +157,7 @@ public class PE05 {
     }
     
     public void comandaGuardadaM(String nomClient, String linea, double total) { // Guardar comanda completa
-        comandaGuardada = comandaGuardada + "\n" + "TICKET" + "\n" + "Client: " + nomClient + "\n" + "============================================================================" + "\n" + "NÚM\tPRODUCTE            PREU UNITARI        QUANTITAT           SUBTOTAL" + "\n" + linea + "============================================================================" + "\n" + "TOTAL SENSE IVA: " + igualarTicket(total + "€", espaiTicket = 59) + total + "€" + "\n" + "IVA (10%): " + igualarTicket((total * 0.1) + "€", espaiTicket = 65) + (total * 0.1) + "€" + "\n" + "TOTAL: " + igualarTicket((total + (total * 0.1)) + "€", espaiTicket = 69) + (total + (total * 0.1)) + "€" + "\n" + "============================================================================";
+        comandaGuardada = comandaGuardada + "\n" + "TICKET" + "\n" + "Client: " + nomClient + "\n" + "============================================================================" + "\n" + "NÚM\tPRODUCTE            PREU UNITARI        QUANTITAT          SUBTOTAL" + "\n" + linea + "============================================================================" + "\n" + "TOTAL SENSE IVA: " + igualarTicket(total + "€", espaiTicket = 59) + total + "€" + "\n" + "IVA (10%): " + igualarTicket((total * 0.1) + "€", espaiTicket = 65) + (total * 0.1) + "€" + "\n" + "TOTAL: " + igualarTicket((total + (total * 0.1)) + "€", espaiTicket = 69) + (total + (total * 0.1)) + "€" + "\n" + "============================================================================";
     }
     
     public String igualarTicket(String paraula, int espai) { // Afegir espais per a igualar columnes
