@@ -12,6 +12,7 @@ int quantitat = 0;
 String resposta = "";
 double total = 0;
 static String comandaGuardada = "";
+int espaiTicket =  0;
     public static void main(String[] args) {
         PE05 p = new PE05();
         p.principal();
@@ -21,6 +22,7 @@ static String comandaGuardada = "";
     
         System.out.println("BENVINGUT");
         boolean mainMenu = true;
+        boolean A = false;
         do {
             System.out.println("A) Crear nova comanda");
             System.out.println("B) Actualitzar comanda anterior");
@@ -36,7 +38,7 @@ static String comandaGuardada = "";
             catch (Exception e) {
                 System.out.println("Error inesperat");
             }
-            boolean A = false;
+            
             if ((opcio.equalsIgnoreCase("b") || opcio.equalsIgnoreCase("c")) && !A){
                 System.out.println("No hi ha cap comanda anterior per actualitzar.");
                 continue;
@@ -167,10 +169,16 @@ public void guardarComanda() {
         double subtotal = (preuUnitari * quantitat);
         total = total + subtotal;
         
-    linea =linea + "\n" +numeroTicket+ "\t"+ "\t"+ nomProducte + "\t" + preuUnitari + "€ \t" + quantitat +"\t"+ subtotal + "€"+"\n" ;
+    linea =linea + "\n" +numeroTicket+ "\t"+ nomProducte + igualarTicket(nomProducte) + preuUnitari + "€"+ igualarTicket(preuUnitari+"") + quantitat +igualarTicket(quantitat+"")+ subtotal + "€"+"\n" ;
     numeroTicket++;
    }public void comandaGuardadaM(String nomClient, String linea, double total) {
-                        comandaGuardada =comandaGuardada+ "\n" + "TICKET" + "\n" + "Client: "+ nomClient + "\n" + "=================================================================" + "\n" + "NUM\tPRODUCTE\tPREU UNITARI\tQUANTITAT\tSUBTOTAL" + "\n" +  linea + "================================================================="+ "\n" + "TOTAL SENSE IVA: " + total + "€" +"\n" + "IVA (10%):\t"+(total*0.1)+"€"+"\n"+"TOTAL:\t"+ (total+(total*0.1))+"€"+"\n"+"================================================================";
+                        comandaGuardada =comandaGuardada+ "\n" + "TICKET" + "\n" + "Client: "+ nomClient + "\n" + "============================================================================" + "\n" + "NUM\tPRODUCTE            PREU UNITARI        QUANTITAT           SUBTOTAL" + "\n" +  linea + "============================================================================"+ "\n" + "TOTAL SENSE IVA: " + total + "€" +"\n" + "IVA (10%):\t"+(total*0.1)+"€"+"\n"+"TOTAL:\t"+ (total+(total*0.1))+"€"+"\n"+"============================================================================";
     
    }
-}
+   public String igualarTicket(String paraula){
+    String blanc = "";
+   for (int i = paraula.length(); i < 20 ; i++) {
+    blanc = blanc + " ";
+    }
+    return blanc;
+   } }
