@@ -1,5 +1,5 @@
 # Pla de proves unitàries - PE05 
-/*Fet amb chat GPT*/
+
 | Id | Prova (descripció) | Valor entrada | Valor sortida | Resultat esperat | Estat de la prova |
 |----|-------------------|---------------|---------------|-----------------|-----------------|
 | 1  | Crear comanda amb un producte correcte | Nom client: Pol, Producte: Hernaez, Preu: 1.0, Quantitat: 3 | Tiquet generat amb subtotal 3.0€ | Total correcte 3.0€, IVA 0.3€, Total final 3.3€ | OK |
